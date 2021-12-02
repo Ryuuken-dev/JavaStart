@@ -1,6 +1,8 @@
+package Variables;
+
 import java.util.Random;
 
-public class Variables {
+public class General {
 
 
 
