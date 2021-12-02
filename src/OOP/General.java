@@ -59,7 +59,10 @@ public class General {
         flight.addPassenger(passenger3);
         flight.addPassenger(passenger4);
         System.out.println(flight.getPassengers());
-        System.out.println(flight.getDate());
+        System.out.println("Data wylotu:\n" + flight.getDate() + '\n');
+        System.out.println("Miasto początkowe:\n" + flight.getCityOfDeparture());
+        System.out.println("Miasto docelowe:\n" + flight.getDestinationCity() + '\n');
+        System.out.println("Liczba pasażerów:\n" + flight.getNumberOfPlaces());
 
 
 
