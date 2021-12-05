@@ -18,6 +18,7 @@ public class General {
         a następnie wyświetlisz informację o nich na ekranie.
      */
 
+        //Solution:
 //        Company company = new Company();
 //        System.out.println(company.getWorkers());
 
@@ -27,7 +28,7 @@ public class General {
         nazwisko, płeć. Pozwól na odczyt wszystkich właściwości książki oraz autora, ale nie na ich zmianę spoza klasy.
 
          */
-
+        //Solution:
 //        Author author1 = new Author("Brandon", "Sanderson", "male");
 //        Book book1 = new Book(author1, "Archiwum Burzowego Swiatła", 60, "1234");
 //        BookInfo bookInfo = new BookInfo();
@@ -46,6 +47,7 @@ public class General {
         Do reprezentacji daty użyj jednej z dostępnych w Javie klas (sprawdź jakiej).
          */
 
+        //Solution:
         Date date1 = new Date();
         SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         Passenger passenger1 = new Passenger("Alicja", "Zakrzewska", "female", 27);
@@ -68,10 +70,5 @@ public class General {
 
 
     }
-
-
-
-
-
 
 }
