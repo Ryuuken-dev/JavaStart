@@ -13,6 +13,7 @@ public class General {
     Napisz program, który pobierze liczbę reprezentującą wiek użytkownika w latach (liczba
     całkowita), a następnie wyświetli czy jest on pełnoletni czy nie.
      */
+
 //        System.out.println(userAge(scanner));           //solution
 
         /*
@@ -20,6 +21,7 @@ public class General {
     jest ona dodatnia, ujemna czy równa zero, b) wyświetli również informację czy jest ona
     parzysta czy nieparzysta.
          */
+
 //        System.out.println(getNumber(scanner));         //solution
 
         /*
@@ -28,7 +30,8 @@ public class General {
     wysoko/za nisko/trafiona. DODATKOWO: Ulepsz grę aby pytała tylko raz jeśli od razu trafisz
     i mówiła dodatkowo: “gorąco!” jeśli byłeś blisko oraz “zimno…” jeśli byłeś daleko.
          */
-        guessGame(scanner, random);
+
+        guessGame(scanner, random);     //solution
 
 
     }
