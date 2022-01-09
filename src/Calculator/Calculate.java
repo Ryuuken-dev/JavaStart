@@ -1,28 +1,38 @@
 package Calculator;
 
+import java.util.Scanner;
+
 public class Calculate {
 
     /*
-    Napisz program-kalkulator operujący na liczbach zmiennoprzecinkowych typu double,
-    który będzie składał się z dwóch klas w osobnych plikach:
+    Napisz kalkulator dla liczb zmiennoprzecinkowych, który pozwala użytkownikowi kolejno na:
 
-    Calculator.java - Klasa tu zdefiniowana powinna zawierać metody add(), subtract(), multiply(), divide(), czyli
-    kolejno dodawanie, odejmowanie, mnożenie i dzielenie. Zastanów się jakie argumenty powinny przyjmować oraz wartość
-    jakiego typu powinny zwracać
-    Calculate.java - tutaj umieść klasę testową z metodą main().
-    Zadeklaruj i zainicjuj w niej co najmniej 2 zmienne typu double, utwórz obiekt klasy Calculator i za jego pomocą
-    oblicz wynik różnych działań matematycznych.
-    Wszystkie wyniki działań wyświetl na ekranie.
+    wprowadzenie pierwszej liczby,
+    wprowadzenie jednego z podstawowych działań matematycznych (plus, minus, podziel, pomnóż) - w postaci znaków +, -, /, *,
+    wprowadzenie drugiej liczby.
+    Po czym wyświetlony jest wynik odpowiedniego działania.
+
+    W programie stwórz co najmniej dwie osobne klasy. W programie wykorzystaj instrukcję switch,
+    nie możesz wykorzystywać instrukcji if-else.
      */
 
     public static void main(String[] args) {
-        double x = 10;
-        double y = 23;
+
+        Scanner scanner = new Scanner(System.in);
+        Interface anInterface = new Interface();
         Calculator calculator = new Calculator();
-        System.out.println("A= " + x + " B= " + y);
-        System.out.println("A+B= " + calculator.add(x, y));
-        System.out.println("A-B= " + calculator.subtract(x, y));
-        System.out.println("A*B= " + calculator.multiply(x, y));
-        System.out.println("A/B= " + calculator.divide(x, y));
+        Controller controller = new Controller();
+
+        System.out.println(anInterface.showInterface());
+        System.out.println("Wybierz operację z listy (od 1 do 4): ");
+        byte operation = scanner.nextByte();
+        controller.validate(operation);
+        System.out.println("Wpisz pierwszą liczbę: ");
+        double firstNumber = scanner.nextDouble();
+        System.out.println("Wpisz drugą liczbę: ");
+        double secondNumber = scanner.nextDouble();
+        UsersChoice usersChoice = new UsersChoice(firstNumber, secondNumber, operation);
+        System.out.println(calculator.getResult(usersChoice));
+
     }
 }
