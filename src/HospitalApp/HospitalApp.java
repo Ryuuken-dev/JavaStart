@@ -31,7 +31,7 @@ public class HospitalApp {
             patientService.setOption();
             switch (patientService.getOption()){
                 case 1:
-                    if (!patientService.checkPlaces(hospital)){
+                    if (!patientService.checkPlaces(hospital)){             //works
                         System.out.println("Brak miejsc!");
                         System.exit(404);
                     }

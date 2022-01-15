@@ -5,15 +5,16 @@ import java.util.Scanner;
 
 public class PatientService {
 
+    Scanner scanner = new Scanner(System.in);
     InformationSheet informationSheet;
     private byte option;
+    String pesel;
 
     public PatientService(InformationSheet informationSheet){
 
         this.informationSheet = informationSheet;
     }
 
-    Scanner scanner = new Scanner(System.in);
 
     public String showAvailableOptions(){
         return "1 - dopisanie pacjenta do kolejki" + '\n' +
@@ -26,7 +27,9 @@ public class PatientService {
         return hospital.getPlaces() > 0;
     }
 
-    public void setOption() { this.option = scanner.nextByte(); }
+    public void setOption() {
+        this.option = scanner.nextByte();
+    }
 
     public byte getOption() {
         return option;
@@ -34,13 +37,13 @@ public class PatientService {
 
     private boolean validatePesel(String pesel){
 
-        int result = 0;
-        byte divisor = 0;
+        int resultOfDivision = 0;
+        byte divisor;
         char[] peselNumbers = pesel.toCharArray();
         if (peselNumbers.length != 11){
             return false;
         }
-        for (int i = 0; i < peselNumbers.length; i++) {
+        for (int i = 0; i < peselNumbers.length-1; i++) {
             if (i == 0 || i == 4 || i == 8){
                 divisor = 1;
             } else if (i == 1 || i == 5 || i == 9){
@@ -51,13 +54,12 @@ public class PatientService {
                 divisor = 9;
             }
             int number = Integer.parseInt(String.valueOf(peselNumbers[i]));
-            result += number*divisor;
+            resultOfDivision += number*divisor;
         }
-        char[] resultNumbers = Integer.toString(result).toCharArray();
-        if (resultNumbers[resultNumbers.length-1] == peselNumbers[peselNumbers.length-1]){
-            return true;
-        }
-        return false;
+        char[] resultNumbers = Integer.toString(resultOfDivision).toCharArray();
+        byte finalResult = (byte) (10-Byte.parseByte(String.valueOf(resultNumbers[resultNumbers.length-1])));
+        byte lastPeselNumber = Byte.parseByte(String.valueOf(peselNumbers[peselNumbers.length-1]));
+        return finalResult == lastPeselNumber;
 
     }
 
@@ -68,8 +70,11 @@ public class PatientService {
         String name = scanner.nextLine();
         System.out.print(informationSheet.getSurnameInfo());
         String surname = scanner.nextLine();
-        System.out.print(informationSheet.getPeselInfo());
-        String pesel = scanner.nextLine();
+        do {
+            System.out.print(informationSheet.getPeselInfo());
+            pesel = scanner.nextLine();
+        } while (!validatePesel(pesel));
+
         return new Patient(name, surname, pesel);
     }
 
@@ -77,7 +82,7 @@ public class PatientService {
 
         hospital.getPatients()[hospital.getPosition()] = patient;
         hospital.setPosition();
-        hospital.setPlaces();
+        hospital.decreasePlacesNumber();
     }
 
     public StringBuilder showPatients(Hospital hospital){

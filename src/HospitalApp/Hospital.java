@@ -3,7 +3,7 @@ package HospitalApp;
 public class Hospital {
 
     private int position = 0;
-    private int places = 2;
+    private int places = 10;
     private final Object[] patients = new Object[places];
 
 
@@ -15,8 +15,10 @@ public class Hospital {
         return patients;
     }
 
-    public void setPlaces() {
-        this.places++;
+    public void decreasePlacesNumber(){--this.places;}
+
+    public void setPlaces(int quantity) {
+        this.places = quantity;
     }
 
     public void setPosition() {
